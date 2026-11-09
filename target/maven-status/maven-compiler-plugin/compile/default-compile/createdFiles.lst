@@ -1,0 +1,5 @@
+com\billeteradigital\negocio\BilleteraService.class
+com\billeteradigital\modelo\Movimiento.class
+com\billeteradigital\presentacion\BilleteraServlet.class
+com\billeteradigital\HelloServlet.class
+com\billeteradigital\datos\MovimientoRepositorio.class
