@@ -13,7 +13,7 @@
 <body class="bg-body-tertiary">
 
     <!-- Header oscuro -->
-   <header class="bg-dark text-white py-3 px-4 mb-4">
+   <header class="bg-primary text-white py-3 px-4 mb-4">
         <div class="container-lg d-flex justify-content-center align-items-center text-center">
             <h5 class="mb-0 fw-semibold ">Mi Billetera Digital</h5>
         </div>
@@ -34,39 +34,20 @@
                     </div>
                 </div>
             </div>
-            <!-- Panel de validación de errores -->
-            <c:if test="${not empty errores}">
-                <div class="col-12">
-                    <div class="card border-danger-subtle bg-danger bg-opacity-10 p-3 shadow-sm">
-                        <h6 class="text-danger fw-bold mb-2">¡¡ERROR!!</h6>
-                        <c:if test="${not empty param.monto}">
-                            <p class="small text-secondary mb-1">Gasto solicitado: S/ <c:out value="${param.monto}"/></p>
-                        </c:if>
-                        <p class="small text-secondary mb-2">
-                            Saldo disponible: S/ <fmt:formatNumber value="${saldo}" type="number" minFractionDigits="2" maxFractionDigits="2"/>
-                        </p>
-                        <ul class="text-danger mb-0 ps-3 small">
-                            <c:forEach var="err" items="${errores}">
-                                <li><c:out value="${err}"/></li>
-                            </c:forEach>
-                        </ul>
-                    </div>
-                </div>
-            </c:if>
             
         </div>
 
-        <!-- Historial y Validación -->
+        <!--Historial -->
         <div class="row g-3 mb-4 align-items-start">
             <div class="${not empty errores ? 'col-md-12' : 'col-md-12'}">
                 <h6 class="fw-bold mb-2">Movimientos recientes</h6>
                 <div class="card shadow-sm overflow-hidden">
                     <table class="table table-hover align-middle mb-0 text-center">
                         <thead class="bg-navy text-white">
-                            <tr class="table-dark">
-                                <th scope="col" class="w-25 text-white">Tipo</th>
-                                <th scope="col" class="w-25 text-white">Monto (S/)</th>
-                                <th scope="col" class="w-25 text-white">Orden</th>
+                            <tr class="table-primary">
+                                <th scope="col" class="w-25 text-muted">Tipo</th>
+                                <th scope="col" class="w-25 text-muted">Monto (S/)</th>
+                                <th scope="col" class="w-25 text-muted">Orden</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -99,7 +80,7 @@
             </div>
         </div>
 
-        <!-- Formulario: Nuevo movimiento -->
+        <!--Nuevo movimiento -->
         <div class="card shadow-sm p-3 mb-5">
             <h6 class="fw-bold mb-3">Nuevo movimiento</h6>
             <form method="post" action="<c:url value='/'/>" novalidate>
@@ -122,6 +103,25 @@
                 </div>
             </form>
         </div>
+        <!-- Panel de validación de errores -->
+            <c:if test="${not empty errores}">
+                <div class="col-12">
+                    <div class="card border-danger-subtle bg-danger bg-opacity-10 p-3 shadow-sm">
+                        <h6 class="text-danger fw-bold mb-2">¡¡ERROR!!</h6>
+                        <c:if test="${not empty param.monto}">
+                            <p class="small text-secondary mb-1">Gasto solicitado: S/ <c:out value="${param.monto}"/></p>
+                        </c:if>
+                        <p class="small text-secondary mb-2">
+                            Saldo disponible: S/ <fmt:formatNumber value="${saldo}" type="number" minFractionDigits="2" maxFractionDigits="2"/>
+                        </p>
+                        <ul class="text-danger mb-0 ps-3 small">
+                            <c:forEach var="err" items="${errores}">
+                                <li><c:out value="${err}"/></li>
+                            </c:forEach>
+                        </ul>
+                    </div>
+                </div>
+            </c:if>
 
     </main>
 
